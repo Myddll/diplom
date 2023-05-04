@@ -8,12 +8,12 @@ use Illuminate\Support\Collection;
 
 class JobRepository implements JobRepositoryInterface
 {
-    public function getAllJob(): Collection
+    public function getAllJobs(): Collection|Job
     {
         return Job::all();
     }
 
-    public function getJob(int $id): Job
+    public function getJob(int $id): ?Job
     {
         return Job::find($id);
     }
@@ -26,5 +26,10 @@ class JobRepository implements JobRepositoryInterface
     public function updateJob(Job $job, array $data): bool
     {
         return $job->update($data);
+    }
+
+    public function deleteJob(Job $job): bool
+    {
+        return $job->delete();
     }
 }

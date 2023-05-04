@@ -2,33 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\Repositories\JobRepositoryInterface;
+use App\Http\Requests\Job\JobRequest;
+use App\Services\JobService;
 use Illuminate\Http\JsonResponse;
 
 class JobController extends Controller
 {
-    public function getJobs(): JsonResponse
+    private JobService $service;
+
+    public function __construct(JobService $service)
     {
-        //
+        $this->service = $service;
     }
 
-    public function getJob(): JsonResponse
+    public function getAllJobs(): JsonResponse
     {
-        //
+        return response()->json($this->service->getAllJobs());
     }
 
-    public function createJob(): JsonResponse
+    public function getJob(int $id): JsonResponse
     {
-        //
+        return response()->json($this->service->getJob($id));
     }
 
-    public function updateJob(): JsonResponse
+    public function createJob(JobRequest $request): JsonResponse
     {
-        //
+        return response()->json($this->service->createJob($request->validated()));
     }
 
-    public function deleteJob(): JsonResponse
+    public function updateJob(JobRequest $request): JsonResponse
     {
-        //
+        return response()->json($this->service->updateJob($request->validated()));
+    }
+
+    public function deleteJob(int $id): JsonResponse
+    {
+        $job = $this->service->getJob($id);
+        return response()->json($this->service->deleteJob($job));
     }
 }
