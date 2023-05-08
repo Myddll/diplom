@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Interfaces\Repositories\JobRepositoryInterface;
-use Illuminate\Support\Collection;
 use App\Models\Job;
+use Illuminate\Support\Collection;
 
 class JobService
 {
@@ -15,14 +15,14 @@ class JobService
         $this->repository = $repository;
     }
 
-    public function getJob(int $id): ?Job
-    {
-        return $this->repository->getJob($id);
-    }
-
     public function getAllJobs(): Collection|Job
     {
         return $this->repository->getAllJobs();
+    }
+
+    public function getJob(int $id): ?Job
+    {
+        return $this->repository->getJob($id);
     }
 
     public function createJob(array $data): Job
@@ -33,10 +33,5 @@ class JobService
     public function updateJob(Job $job, array $data): bool
     {
         return $this->repository->updateJob($job, $data);
-    }
-
-    public function deleteJob(Job $job): bool
-    {
-        return $this->repository->deleteJob($job);
     }
 }

@@ -26,4 +26,13 @@ class UserLoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            '*.required' => 'Это обязательное полей',
+            'email.email' => 'Строка должна быть email',
+            '*.string' => 'Значение должно быть строковым',
+        ];
+    }
 }

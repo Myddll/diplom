@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Job;
+namespace App\Http\Requests\Cabinet;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class JobRequest extends FormRequest
+class CabinetRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +22,8 @@ class JobRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'min:3', 'max:64', 'string', 'unique:jobs,title'],
+            'number' => ['required', 'min:1', 'max:3', 'numeric', 'unique:cabinets,number'],
+            'employee_id' => ['nullable', 'numeric', 'exists:employers,id']
         ];
     }
 
@@ -32,8 +32,10 @@ class JobRequest extends FormRequest
         return [
             '*.required' => 'Это обязательное поле',
             '*.min' => ':min минимальное количество символов',
-            '*.max' => ':max максимальное количество символов',
-            'title.unique' => 'Данное название уже занято',
+            '*.max' => ':max минимальное количество символов',
+            '*.numeric' => 'Значение должно быть числовым',
+            'number.unique' => 'Кабинет уже существует',
+            'employee_id.exists' => 'Такого сотрудника не существует',
         ];
     }
 }

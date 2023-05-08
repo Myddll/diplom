@@ -10,6 +10,8 @@ class TypeEquip extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'types_equip';
 
     protected $fillable = [

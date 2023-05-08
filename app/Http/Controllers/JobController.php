@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Job\JobRequest;
+use App\Models\Job;
 use App\Services\JobService;
 use Illuminate\Http\JsonResponse;
 
@@ -15,7 +16,7 @@ class JobController extends Controller
         $this->service = $service;
     }
 
-    public function getAllJobs(): JsonResponse
+    public function getJobs(): JsonResponse
     {
         return response()->json($this->service->getAllJobs());
     }
@@ -30,14 +31,13 @@ class JobController extends Controller
         return response()->json($this->service->createJob($request->validated()));
     }
 
-    public function updateJob(JobRequest $request): JsonResponse
+    public function updateJob(Job $job, JobRequest $request): JsonResponse
     {
-        return response()->json($this->service->updateJob($request->validated()));
+        return response()->json(['status' => $this->service->updateJob($job, $request->validated())]);
     }
 
-    public function deleteJob(int $id): JsonResponse
+    public function deleteJob(Job $job): JsonResponse
     {
-        $job = $this->service->getJob($id);
-        return response()->json($this->service->deleteJob($job));
+        return response()->json(['status' => $job->delete()]);
     }
 }

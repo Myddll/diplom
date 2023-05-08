@@ -11,6 +11,8 @@ class Computer extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'computers';
 
     protected $fillable = [

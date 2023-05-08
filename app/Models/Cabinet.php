@@ -11,6 +11,8 @@ class Cabinet extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'cabinets';
 
     protected $fillable = [

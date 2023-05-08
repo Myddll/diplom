@@ -24,7 +24,7 @@ class UserRegisterRequest extends FormRequest
         return [
             "name" => ['required', 'string'],
             'email' => ['required', 'email', 'string', 'unique:users,email'],
-            'password' => ['required', 'min:8']
+            'password' => ['required', 'min:8', 'confirmed']
         ];
     }
 
@@ -34,6 +34,7 @@ class UserRegisterRequest extends FormRequest
             '*.required' => 'Это обязательное полей',
             'email.unique' => 'Пользователь с таким email уже существует',
             '*.min' => 'Минимум :min символов',
+            'password.confirmed' => 'Пароли не сходятся',
         ];
     }
 }

@@ -14,6 +14,4 @@ interface JobRepositoryInterface
     public function createJob(array $data): Job;
 
     public function updateJob(Job $job, array $data): bool;
-
-    public function deleteJob(Job $job): bool;
 }

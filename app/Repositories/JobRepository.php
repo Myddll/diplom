@@ -27,9 +27,4 @@ class JobRepository implements JobRepositoryInterface
     {
         return $job->update($data);
     }
-
-    public function deleteJob(Job $job): bool
-    {
-        return $job->delete();
-    }
 }

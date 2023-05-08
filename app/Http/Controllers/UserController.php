@@ -60,7 +60,7 @@ class UserController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
 
-        return response()->json(['message' => 'Success']);
+        return response()->json(['status' => true]);
     }
 
     public function logoutFromAllDevice(Request $request): JsonResponse
