@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CabinetController;
+use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
@@ -53,5 +54,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', [CabinetController::class, 'createCabinet']);
         Route::put('/{cabinet}', [CabinetController::class, 'updateCabinet']);
         Route::delete('/{cabinet}', [CabinetController::class, 'deleteCabinet']);
+    });
+    Route::group(['prefix' => 'computer'], function () {
+        Route::get('/', [ComputerController::class, 'getComputers']);
+        Route::get('/{computer}', [ComputerController::class, 'getComputer']);
+        Route::post('/', [ComputerController::class, 'createComputer']);
+        Route::put('/{computer}', [ComputerController::class, 'updateComputer']);
+        Route::delete('/{computer}', [ComputerController::class, 'deleteComputer']);
     });
 });

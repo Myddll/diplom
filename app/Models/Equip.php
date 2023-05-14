@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Equip extends Model
 {
@@ -21,9 +20,9 @@ class Equip extends Model
         'specs',
     ];
 
-    public function computers(): BelongsToMany
+    public function computers(): BelongsTo
     {
-        return $this->belongsToMany(Computer::class);
+        return $this->belongsTo(Computer::class);
     }
 
     public function type(): BelongsTo

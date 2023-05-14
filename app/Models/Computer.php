@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Computer extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     public $timestamps = false;
 
@@ -25,13 +27,19 @@ class Computer extends Model
         'power_unit',
     ];
 
-    public function equips(): BelongsToMany
+    public function equips(): HasMany
     {
-        return $this->belongsToMany(Equip::class);
+        return $this->HasMany(Equip::class);
     }
 
     public function cabinet(): BelongsTo
     {
         return $this->belongsTo(Cabinet::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['*'])->logOnlyDirty();
     }
 }

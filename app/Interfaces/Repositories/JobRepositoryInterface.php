@@ -9,8 +9,6 @@ interface JobRepositoryInterface
 {
     public function getAllJobs(): Collection|Job;
 
-    public function getJob(int $id): ?Job;
-
     public function createJob(array $data): Job;
 
     public function updateJob(Job $job, array $data): bool;

@@ -12,9 +12,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types_equip', function (Blueprint $table) {
+        Schema::create('type_equip', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(TypeEquip::class, 'type_equip')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('name_type')->unique();
             $table->json('specs_fields');
         });
     }

@@ -20,11 +20,6 @@ class JobService
         return $this->repository->getAllJobs();
     }
 
-    public function getJob(int $id): ?Job
-    {
-        return $this->repository->getJob($id);
-    }
-
     public function createJob(array $data): Job
     {
         return $this->repository->createJob($data);

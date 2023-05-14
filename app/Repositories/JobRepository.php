@@ -13,11 +13,6 @@ class JobRepository implements JobRepositoryInterface
         return Job::all();
     }
 
-    public function getJob(int $id): ?Job
-    {
-        return Job::find($id);
-    }
-
     public function createJob(array $data): Job
     {
         return Job::create($data);

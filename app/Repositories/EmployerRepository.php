@@ -13,11 +13,6 @@ class EmployerRepository implements EmployerRepositoryInterface
         return Employer::orderByDesc('id')->paginate($paginationSize);
     }
 
-    public function getEmployer(int $id): ?Employer
-    {
-        return Employer::find($id);
-    }
-
     public function createEmployer(array $data): Employer
     {
         return Employer::create($data);

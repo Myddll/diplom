@@ -2,11 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Cabinet;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CabinetResource extends JsonResource
+class EquipResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +14,6 @@ class CabinetResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        /** @var Cabinet $this */
-        return [
-            'id' => $this->id,
-            'number' => $this->number,
-            'employer' => $this->employer,
-        ];
+        return parent::toArray($request);
     }
 }

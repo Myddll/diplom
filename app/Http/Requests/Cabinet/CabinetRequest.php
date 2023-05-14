@@ -21,8 +21,9 @@ class CabinetRequest extends FormRequest
      */
     public function rules(): array
     {
+        //dd($this->route('cabinet'));
         return [
-            'number' => ['required', 'min:1', 'max:3', 'numeric', 'unique:cabinets,number'],
+            'number' => ['required', 'digits_between:1,3', 'numeric', 'unique:cabinets,number,' . $this->route('cabinet')->id ?? '',],
             'employee_id' => ['nullable', 'numeric', 'exists:employers,id']
         ];
     }

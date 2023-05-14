@@ -22,7 +22,7 @@ class Cabinet extends Model
 
     public function employer(): BelongsTo
     {
-        return $this->belongsTo(Employer::class);
+        return $this->belongsTo(Employer::class, 'employee_id', 'id');
     }
 
     public function computers(): HasMany

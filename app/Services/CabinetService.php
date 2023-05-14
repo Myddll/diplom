@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Interfaces\Repositories\CabinetRepositoryInterface;
 use App\Models\Cabinet;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 class CabinetService
 {
@@ -19,11 +18,6 @@ class CabinetService
     public function getAllCabinets(int $paginationSize = 10): LengthAwarePaginator
     {
         return $this->repository->getAllCabinets($paginationSize);
-    }
-
-    public function getCabinet(int $id): ?Cabinet
-    {
-        return $this->repository->getCabinet($id);
     }
 
     public function createEmployer(array $data): Cabinet
