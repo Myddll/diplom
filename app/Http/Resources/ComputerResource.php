@@ -17,6 +17,7 @@ class ComputerResource extends JsonResource
     {
         /** @var Computer $this */
         return [
+            'id' => $this->id,
             'cabinet' => $this->cabinet,
             'processor' => $this->processor,
             'motherboard' => $this->motherboard,

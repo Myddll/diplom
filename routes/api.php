@@ -3,7 +3,9 @@
 use App\Http\Controllers\CabinetController;
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\EquipController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +20,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-
-
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', [UserController::class, 'login']);
@@ -61,5 +60,21 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', [ComputerController::class, 'createComputer']);
         Route::put('/{computer}', [ComputerController::class, 'updateComputer']);
         Route::delete('/{computer}', [ComputerController::class, 'deleteComputer']);
+    });
+    Route::group(['prefix' => 'equip'], function () {
+        Route::get('/', [EquipController::class, 'getAllEquips']);
+        Route::get('/{equip}', [EquipController::class, 'getEquip']);
+        Route::post('/', [EquipController::class, 'createEquip']);
+        Route::put('/{equip}', [EquipController::class, 'updateEquip']);
+        Route::delete('/{equip}', [EquipController::class, 'deleteEquip']);
+    });
+    Route::group(['prefix' => 'type_equip'], function () {
+        Route::get('/', [EquipController::class, 'getAllTypeEquips']);
+        Route::get('/{typeEquip}', [EquipController::class, 'getTypeEquip']);
+        Route::post('/', [EquipController::class, 'createTypeEquip']);
+        Route::put('/{typeEquip}', [EquipController::class, 'updateTypeEquip']);
+    });
+    Route::group(['prefix' => 'log'], function () {
+        Route::get('/', [LogController::class, 'getLogs']);
     });
 });
