@@ -10,6 +10,7 @@ use App\Models\TypeEquip;
 use App\Services\EquipService;
 use App\Services\TypeEquipService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class EquipController extends Controller
 {
@@ -23,9 +24,9 @@ class EquipController extends Controller
         $this->equipService = $equipService;
     }
 
-    public function getAllEquips(): JsonResponse
+    public function getAllEquips(): AnonymousResourceCollection
     {
-        return response()->json(EquipResource::collection($this->equipService->getAllEquips()));
+        return EquipResource::collection($this->equipService->getAllEquips());
     }
 
     public function getAllTypeEquips(): JsonResponse
@@ -33,37 +34,37 @@ class EquipController extends Controller
         return response()->json($this->typeEquipService->getAllTypeEquips());
     }
 
-    public function getEquip(Equip $equip)
+    public function getEquip(Equip $equip): EquipResource
     {
-        return response()->json(new EquipResource($equip));
+        return new EquipResource($equip);
     }
 
-    public function getTypeEquip(TypeEquip $typeEquip)
+    public function getTypeEquip(TypeEquip $typeEquip): JsonResponse
     {
         return response()->json($typeEquip);
     }
 
-    public function createEquip(EquipRequest $request)
+    public function createEquip(EquipRequest $request): EquipResource
     {
-        return response()->json(new EquipResource($this->equipService->createEquip($request->validated())));
+        return new EquipResource($this->equipService->createEquip($request->validated()));
     }
 
-    public function createTypeEquip(TypeEquipRequest $request)
+    public function createTypeEquip(TypeEquipRequest $request): JsonResponse
     {
         return response()->json($this->typeEquipService->createTypeEquip($request->validated()));
     }
 
-    public function updateEquip(Equip $equip, EquipRequest $request)
+    public function updateEquip(Equip $equip, EquipRequest $request): JsonResponse
     {
         return response()->json($this->equipService->updateEquip($equip, $request->validated()));
     }
 
-    public function updateTypeEquip(TypeEquip $typeEquip, TypeEquipRequest $request)
+    public function updateTypeEquip(TypeEquip $typeEquip, TypeEquipRequest $request): JsonResponse
     {
         return response()->json($this->typeEquipService->updateTypeEquip($typeEquip, $request->validated()));
     }
 
-    public function deleteEquip(Equip $equip)
+    public function deleteEquip(Equip $equip): JsonResponse
     {
         return response()->json($equip->delete());
     }

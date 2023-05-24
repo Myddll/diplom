@@ -6,6 +6,7 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\EquipController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/register', [UserController::class, 'register']);
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/logout', [UserController::class, 'logout']);
-        Route::get('/me', function (Request $request) {
-            return $request->user();
-        });
+        Route::get('/me', [UserController::class, 'me']);
         Route::get('/logout-all', [UserController::class, 'logoutFromAllDevice']);
     });
 });
@@ -73,6 +72,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{typeEquip}', [EquipController::class, 'getTypeEquip']);
         Route::post('/', [EquipController::class, 'createTypeEquip']);
         Route::put('/{typeEquip}', [EquipController::class, 'updateTypeEquip']);
+    });
+    Route::group(['prefix' => 'program'], function () {
+        Route::get('/', [ProgramController::class, 'getAllPrograms']);
+        Route::get('/{program}', [ProgramController::class, 'getProgram']);
+        Route::post('/', [ProgramController::class, 'createProgram']);
+        Route::put('/{program}', [ProgramController::class, 'updateProgram']);
+        Route::delete('/{program}', [ProgramController::class, 'deleteProgram']);
     });
     Route::group(['prefix' => 'log'], function () {
         Route::get('/', [LogController::class, 'getLogs']);

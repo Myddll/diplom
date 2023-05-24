@@ -67,6 +67,6 @@ class UserController extends Controller
     {
         $request->user()->tokens()->delete();
 
-        return response()->json(['message' => 'Success']);
+        return response()->json(['message' => true]);
     }
 }
