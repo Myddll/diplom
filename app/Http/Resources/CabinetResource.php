@@ -19,7 +19,14 @@ class CabinetResource extends JsonResource
         return [
             'id' => $this->id,
             'number' => $this->number,
-            'employer' => $this->employer,
+            'employer' => !$this->employer ? null : [
+                'id' => $this->employer->id,
+                'job_id' => $this->employer->job->title,
+                'telephone' => $this->employer->telephone,
+                'firstname' => $this->employer->firstname,
+                'lastname' => $this->employer->lastname,
+                'date_birth' => $this->employer->date_birth,
+            ],
         ];
     }
 }
