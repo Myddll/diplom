@@ -21,7 +21,7 @@ class ProgramResource extends JsonResource
         return [
             'title' => $this->title,
             'date' => $this->date,
-            'need_paid' => Carbon::now()->format('Y-m-d') >= Carbon::parse($this->date),  //(Carbon::now()->format('Y-m-d') <= Carbon::parse($this->date_before)) ?? false,
+            'need_paid' => Carbon::now()->format('Y-m-d') >= Carbon::parse($this->date),
         ];
     }
 }
