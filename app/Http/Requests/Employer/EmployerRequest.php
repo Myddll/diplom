@@ -24,7 +24,7 @@ class EmployerRequest extends FormRequest
     {
         return [
             'job_id' => ['required', 'exists:jobs,id', 'numeric'],
-            'telephone' => ['required', 'digits_between:11,11', 'numeric', 'unique:employers,telephone,' . $this->route('employer')->id ?? '',],
+            'telephone' => ['required', 'digits_between:11,11', 'numeric', 'unique:employers,telephone,' . $this->route('employer')?->id ?? '',],
             'firstname' => ['required', 'min:2', 'max:64', 'string',],
             'lastname' => ['required', 'min:2', 'max:64', 'string',],
             'date_birth' => ['required', 'date', 'before:' . Carbon::now()->toDateString(),],
