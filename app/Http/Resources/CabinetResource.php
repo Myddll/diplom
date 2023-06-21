@@ -27,6 +27,7 @@ class CabinetResource extends JsonResource
                 'lastname' => $this->employer->lastname,
                 'date_birth' => $this->employer->date_birth,
             ],
+            'computer_count' => $this->computers->count(),
         ];
     }
 }
