@@ -21,9 +21,9 @@ class JobController extends Controller
         return response()->json($this->service->getAllJobs());
     }
 
-    public function getJob(int $id): JsonResponse
+    public function getJob(Job $job): JsonResponse
     {
-        return response()->json($this->service->getJob($id));
+        return response()->json($job);
     }
 
     public function createJob(JobRequest $request): JsonResponse
