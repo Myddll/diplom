@@ -24,7 +24,7 @@ class ProgramRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:3', 'max:256', 'unique:programs,title'],
-            'date' => ['nullable', 'date', 'after_or_equal:' . Carbon::now()->format('Y-m-d')],
+            'date' => ['date', 'after_or_equal:' . Carbon::now()->format('Y-m-d')],
         ];
     }
 
