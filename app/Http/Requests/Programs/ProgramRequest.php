@@ -24,8 +24,7 @@ class ProgramRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'min:3', 'max:256', 'unique:programs,title'],
-            'not_required_payment' => ['sometimes', 'accepted', 'exclude'],
-            'date' => ['required_without:not_required_payment', 'exclude_if:not_required_payment,true', 'date', 'after_or_equal:' . Carbon::now()->format('Y-m-d')],
+            'date' => ['required', 'nullable', 'date', 'after_or_equal:' . Carbon::now()->format('Y-m-d')],
         ];
     }
 
