@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 interface CabinetRepositoryInterface
 {
-    public function getAllCabinets(int $paginationSize = 10): Collection;
+    public function getAllCabinets(): Collection;
 
     public function createCabinet(array $data): Cabinet;
 

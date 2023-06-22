@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 interface ComputerRepositoryInterface
 {
-    public function getAllComputer(int $paginationSize = 10): Collection;
+    public function getAllComputer(): Collection;
 
     public function createComputer(array $data): Computer;
 

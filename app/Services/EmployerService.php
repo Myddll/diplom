@@ -15,9 +15,9 @@ class EmployerService
         $this->repository = $repository;
     }
 
-    public function getAllEmployers(int $paginationSize = 10): Collection
+    public function getAllEmployers(): Collection
     {
-        return $this->repository->getAllEmployers($paginationSize);
+        return $this->repository->getAllEmployers();
     }
 
     public function createEmployer(array $data): Employer

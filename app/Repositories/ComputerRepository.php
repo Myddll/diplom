@@ -8,9 +8,9 @@ use Illuminate\Support\Collection;
 
 class ComputerRepository implements ComputerRepositoryInterface
 {
-    public function getAllComputer(int $paginationSize = 10): Collection
+    public function getAllComputer(): Collection
     {
-        return Computer::orderByDesc('id')->get($paginationSize);
+        return Computer::orderByDesc('id')->get();
     }
 
     public function createComputer(array $data): Computer

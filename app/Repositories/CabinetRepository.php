@@ -8,9 +8,9 @@ use Illuminate\Support\Collection;
 
 class CabinetRepository implements CabinetRepositoryInterface
 {
-    public function getAllCabinets(int $paginationSize = 10): Collection
+    public function getAllCabinets(): Collection
     {
-        return Cabinet::orderByDesc('id')->get($paginationSize);
+        return Cabinet::orderByDesc('id')->get();
     }
 
     public function createCabinet(array $data): Cabinet

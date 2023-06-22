@@ -15,9 +15,9 @@ class EquipService
         $this->repository = $repository;
     }
 
-    public function getAllEquips(int $paginationSize = 10): Collection
+    public function getAllEquips(): Collection
     {
-        return $this->repository->getAllEquips($paginationSize);
+        return $this->repository->getAllEquips();
     }
 
     public function createEquip(array $data): Equip

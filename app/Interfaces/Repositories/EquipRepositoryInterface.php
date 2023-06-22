@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 interface EquipRepositoryInterface
 {
-    public function getAllEquips(int $paginationSize = 10): Collection;
+    public function getAllEquips(): Collection;
 
     public function createEquip(array $data): Equip;
 

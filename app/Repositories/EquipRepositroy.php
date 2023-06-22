@@ -8,9 +8,9 @@ use Illuminate\Support\Collection;
 
 class EquipRepositroy implements EquipRepositoryInterface
 {
-    public function getAllEquips(int $paginationSize = 10): Collection
+    public function getAllEquips(): Collection
     {
-        return Equip::orderByDesc('id')->get($paginationSize);
+        return Equip::orderByDesc('id')->get();
     }
 
     public function createEquip(array $data): Equip

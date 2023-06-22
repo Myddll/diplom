@@ -15,9 +15,9 @@ class CabinetService
         $this->repository = $repository;
     }
 
-    public function getAllCabinets(int $paginationSize = 10): Collection
+    public function getAllCabinets(): Collection
     {
-        return $this->repository->getAllCabinets($paginationSize);
+        return $this->repository->getAllCabinets();
     }
 
     public function createEmployer(array $data): Cabinet

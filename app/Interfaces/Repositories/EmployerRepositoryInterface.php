@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 interface EmployerRepositoryInterface
 {
-    public function getAllEmployers(int $paginationSize = 10): Collection;
+    public function getAllEmployers(): Collection;
 
     public function createEmployer(array $data): Employer;
 

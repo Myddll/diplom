@@ -8,9 +8,9 @@ use Illuminate\Support\Collection;
 
 class EmployerRepository implements EmployerRepositoryInterface
 {
-    public function getAllEmployers(int $paginationSize = 10): Collection
+    public function getAllEmployers(): Collection
     {
-        return Employer::orderByDesc('id')->get($paginationSize);
+        return Employer::orderByDesc('id')->get();
     }
 
     public function createEmployer(array $data): Employer

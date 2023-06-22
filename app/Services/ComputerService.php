@@ -15,9 +15,9 @@ class ComputerService
         $this->repository = $repository;
     }
 
-    public function getAllComputer(int $paginationSize = 10): Collection
+    public function getAllComputer(): Collection
     {
-        return $this->repository->getAllComputer($paginationSize);
+        return $this->repository->getAllComputer();
     }
 
     public function createComputer(array $data): Computer
