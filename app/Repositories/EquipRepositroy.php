@@ -4,13 +4,13 @@ namespace App\Repositories;
 
 use App\Interfaces\Repositories\EquipRepositoryInterface;
 use App\Models\Equip;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class EquipRepositroy implements EquipRepositoryInterface
 {
-    public function getAllEquips(int $paginationSize = 10): LengthAwarePaginator
+    public function getAllEquips(int $paginationSize = 10): Collection
     {
-        return Equip::orderByDesc('id')->paginate($paginationSize);
+        return Equip::orderByDesc('id')->get($paginationSize);
     }
 
     public function createEquip(array $data): Equip

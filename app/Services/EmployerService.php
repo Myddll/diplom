@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\Repositories\EmployerRepositoryInterface;
 use App\Models\Employer;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class EmployerService
 {
@@ -15,7 +15,7 @@ class EmployerService
         $this->repository = $repository;
     }
 
-    public function getAllEmployers(int $paginationSize = 10): LengthAwarePaginator
+    public function getAllEmployers(int $paginationSize = 10): Collection
     {
         return $this->repository->getAllEmployers($paginationSize);
     }

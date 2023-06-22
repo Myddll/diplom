@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\Repositories\CabinetRepositoryInterface;
 use App\Models\Cabinet;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class CabinetService
 {
@@ -15,7 +15,7 @@ class CabinetService
         $this->repository = $repository;
     }
 
-    public function getAllCabinets(int $paginationSize = 10): LengthAwarePaginator
+    public function getAllCabinets(int $paginationSize = 10): Collection
     {
         return $this->repository->getAllCabinets($paginationSize);
     }

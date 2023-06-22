@@ -3,11 +3,11 @@
 namespace App\Interfaces\Repositories;
 
 use App\Models\Cabinet;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 interface CabinetRepositoryInterface
 {
-    public function getAllCabinets(int $paginationSize = 10): LengthAwarePaginator;
+    public function getAllCabinets(int $paginationSize = 10): Collection;
 
     public function createCabinet(array $data): Cabinet;
 

@@ -3,11 +3,11 @@
 namespace App\Interfaces\Repositories;
 
 use App\Models\Employer;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 interface EmployerRepositoryInterface
 {
-    public function getAllEmployers(int $paginationSize = 10): LengthAwarePaginator;
+    public function getAllEmployers(int $paginationSize = 10): Collection;
 
     public function createEmployer(array $data): Employer;
 

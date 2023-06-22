@@ -4,13 +4,13 @@ namespace App\Repositories;
 
 use App\Interfaces\Repositories\EmployerRepositoryInterface;
 use App\Models\Employer;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class EmployerRepository implements EmployerRepositoryInterface
 {
-    public function getAllEmployers(int $paginationSize = 10): LengthAwarePaginator
+    public function getAllEmployers(int $paginationSize = 10): Collection
     {
-        return Employer::orderByDesc('id')->paginate($paginationSize);
+        return Employer::orderByDesc('id')->get($paginationSize);
     }
 
     public function createEmployer(array $data): Employer

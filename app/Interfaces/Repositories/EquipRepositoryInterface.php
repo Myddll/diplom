@@ -3,11 +3,11 @@
 namespace App\Interfaces\Repositories;
 
 use App\Models\Equip;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 interface EquipRepositoryInterface
 {
-    public function getAllEquips(int $paginationSize = 10): LengthAwarePaginator;
+    public function getAllEquips(int $paginationSize = 10): Collection;
 
     public function createEquip(array $data): Equip;
 

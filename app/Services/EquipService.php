@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\Repositories\EquipRepositoryInterface;
 use App\Models\Equip;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class EquipService
 {
@@ -15,7 +15,7 @@ class EquipService
         $this->repository = $repository;
     }
 
-    public function getAllEquips(int $paginationSize = 10): LengthAwarePaginator
+    public function getAllEquips(int $paginationSize = 10): Collection
     {
         return $this->repository->getAllEquips($paginationSize);
     }
